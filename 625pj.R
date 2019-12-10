@@ -1,5 +1,3 @@
-trips=trips[,c(5,6,10,11,13,14)]
-saveRDS(trips,file = "workingdata.rds")
 readRDS("workingdata.rds")
 library(caret)
 library(doParallel)
