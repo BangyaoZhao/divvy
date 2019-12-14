@@ -1,7 +1,7 @@
-trips_1=read.csv(file="Divvy_Trips_2018_Q1.csv")
-trips_2=read.csv(file="Divvy_Trips_2018_Q2.csv")
-trips_3=read.csv(file="Divvy_Trips_2018_Q3.csv")
-trips_4=read.csv(file="Divvy_Trips_2018_Q4.csv")
+trips_1=read.csv(file="~/Documents/Github/Divvy_Trips_2018_Q1.csv")
+trips_2=read.csv(file="~/Documents/Github/Divvy_Trips_2018_Q2.csv")
+trips_3=read.csv(file="~/Documents/Github/Divvy_Trips_2018_Q3.csv")
+trips_4=read.csv(file="~/Documents/Github/Divvy_Trips_2018_Q4.csv")
 
 library(dplyr)
 library(bigmemory)
