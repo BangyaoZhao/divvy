@@ -2,6 +2,7 @@ trips=readRDS("/Users/sunyichi/Documents/GitHub/divvy/workingdata_normal.rds")
 trips$tripduration=trips$tripduration/60
 
 
+
 library(caret)
 library(doParallel)
 cl <- makePSOCKcluster(4)
