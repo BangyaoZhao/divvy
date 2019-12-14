@@ -8,21 +8,20 @@ saveRDS(train,file="/Users/sunyichi/Documents/GitHub/divvy/workingdata_train.rds
 saveRDS(test,file="/Users/sunyichi/Documents/GitHub/divvy/workingdata_test.rds")
 
 
-trips_train=readRDS("~/workingdata_normal.rds")
+trips_train=readRDS("/Users/sunyichi/Documents/GitHub/divvy/workingdata_train.rds")
+trips_train$from_station_id=as.factor(trips_train$from_station_id)
 set.seed(625)
 library(caret)
 library(doParallel)
-cl <- makePSOCKcluster(20)
+cl <- makePSOCKcluster(4)
 registerDoParallel(cl)
 ## All subsequent models are then run in parallel
 fitControl <- trainControl(
   method = 'cv',                   # k-fold cross validation
   number = 5,                      # number of folds
-  savePredictions = 'final',       # saves predictions for optimal tuning parameter
-  classProbs = T,                  # should class probabilities be returned
-  summaryFunction=twoClassSummary  # results summary function
+  savePredictions = 'final'
 ) 
-model <- train(tripduration ~ ., data = trips_train, method = "rf",metric="RMSE", trControl = fitControl)
+model <- train(tripduration ~ factor(from_station_id)+usertype+gender+factor(season)+age+hour+factor(day_of_week), data = trips_train[1:10,], method = "rf",metric="RMSE", trControl = fitControl)
 stopCluster(cl)
 
 
