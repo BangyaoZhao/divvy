@@ -1,6 +1,6 @@
 trips=readRDS("/Users/sunyichi/Documents/GitHub/divvy/workingdata_normal.rds")
 trips$tripduration=trips$tripduration/60
-smp_size=0.7*dim(trips)[1]
+smp_size=0.5*dim(trips)[1]
 train_ind <- sample(seq_len(dim(trips)[1]), size = smp_size)
 train <- trips[train_ind, ]
 test <- trips[-train_ind, ]
@@ -14,13 +14,18 @@ library(caret)
 library(doParallel)
 cl <- makePSOCKcluster(20)
 registerDoParallel(cl)
-
 ## All subsequent models are then run in parallel
-model <- train(tripduration ~ ., data = trips_train, method = "rf")
-
+fitControl <- trainControl(
+  method = 'cv',                   # k-fold cross validation
+  number = 5,                      # number of folds
+  savePredictions = 'final',       # saves predictions for optimal tuning parameter
+  classProbs = T,                  # should class probabilities be returned
+  summaryFunction=twoClassSummary  # results summary function
+) 
+model <- train(tripduration ~ ., data = trips_train, method = "rf",metric="RMSE", trControl = fitControl)
 stopCluster(cl)
 
 
 
-
+# method=rf,	treebag, bagEarth, rpart, gaussprRadial, knn, svmRadial
 
