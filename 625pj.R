@@ -13,7 +13,7 @@ trips_train$from_station_id=as.factor(trips_train$from_station_id)
 set.seed(625)
 library(caret)
 library(doParallel)
-cl <- makePSOCKcluster(4)
+cl <- makePSOCKcluster(20)
 registerDoParallel(cl)
 ## All subsequent models are then run in parallel
 fitControl <- trainControl(
