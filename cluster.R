@@ -1,24 +1,18 @@
 divvydata <- readRDS(file = "data/newdata_addlocationdock.rds")
-loc <- unique(divvydata[, c("Latitude", "Longitude")]) # unique locations the stations
+loc <- unique(divvydata[, c("from_station_id", "Latitude", "Longitude")]) # unique locations the stations
+rownames(loc) <- loc[,1]
+loc <- loc[, 2:3]
 
-# cl10 <- sapply(seq(10, 50, 10), function(x){ # 10 to 50
-#   c <- kmeans(loc, x, nstart = 25)
-#   return(c(c$totss, c$betweenss))
-# })
-# plot(1:5, cl10[2, ])
 cl10 <- sapply(seq(10, 100, 10), function(x){ # 10 to 100
   c <- kmeans(loc, x, iter.max = 20, nstart = 25)
-  return(c$tot.withinss)
+  return(c$tot.withinss)                      # get total within cluster variance
 })
-png("../plots/totwithinss.png")
+png("plots/totwithinss.png")                  # choose K
 plot(seq(10, 100, 10), cl10, type = "l", xlab = "number of clusters",
      ylab = "total within variance")
 dev.off()
-# lines(x = 25:35, y = cl25)
-# 
-# cl20 <- sapply(seq(20,40), function(x){ # 25 to 35
-#   c <- kmeans(loc, x, iter.max = 20, nstart = 25)
-#   return(c(x, c$tot.withinss))
-# })
-# plot(t(cl20), type = "l")
 
+# decide on K = 40
+cl40 <- kmeans(loc, 40, iter.max = 20, nstart = 25)
+loc_new <- cbind(loc, cl40$cluster)
+data_cl <- merge(divvydata, loc_new)
