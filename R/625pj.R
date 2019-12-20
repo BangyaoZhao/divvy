@@ -28,14 +28,19 @@ library(mapdata)
 library(geosphere)
 library(ggplot2)
 
-register_google(key = "AIzaSyAptYsK2usAw_UzU_d_T0vsAG8kZPT_8pw")
-
-ChicagoMap = get_map("Chicago", zoom = 14, color = "color", legend = "topleft")
-dat <- map_data("chicago")
-
-
-library(ggmap)
+ggmap::register_google(key = "AIzaSyAptYsK2usAw_UzU_d_T0vsAG8kZPT_8pw")
 myLocation <- c(lon = 41.8781, lat = 87.6298)
+ChicagoMap = get_map("Chicago", zoom = 14, color = "color", legend = "topleft")
+p <- ggmap(get_googlemap(center = c(lon = -87.6298, lat = 41.8781),
+                         zoom = 11, scale = 2,
+                         maptype ='terrain',
+                         color = 'color'))
+png('mapbox.png')
+p + geom_point(aes(x = stations$Longitude, y = stations$Latitude), data = stations, size = 0.5) + 
+  theme(legend.position="bottom")
+dev.off()
+
+
 myMap <- get_map(location=myLocation,source="osm", maptype="bw",crop=FALSE)
 ggmap(myMap)                 
 
