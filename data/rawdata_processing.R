@@ -37,8 +37,10 @@ day_of_week = 1 * (day_of_week == "Monday") +
 data$day_of_week = day_of_week
 
 #----
-#create 
-
+#create cluster
+library(readr)
+Divvy_Bicycle_Stations <- read_csv("data/Divvy_Bicycle_Stations.csv")
+View(Divvy_Bicycle_Stations)
 
 
 
