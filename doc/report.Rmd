@@ -1,13 +1,25 @@
 ---
-title: "report"
+title: "Shared Bike Usage Study"
+subtitle: "real-time prediction of bicycle riding-time in the big data setting"
 author: "Bangyao Zhao, Xuemei Ding, Sunyi Chi"
-date: "2019/12/8"
-output: html_document
+date: "2019/12/22"
+output:
+  prettydoc::html_pretty:
+   highlight: github
+   theme: hpstr
+  html_document: default
 ---
+The report is clearly written and sufficiently introduces the dataset of choice, the question of interest, the approach taken, and the results.
+# Introduction
+Bicycle sharing programs are getting popular today. They offer a convenient and affordable way to get around the city for both residents and tourists. Riding a bicycle is a fun exercise, and it is an environment-friendly transportation.
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+The Divvy Bikes is a bike sharing program in Chicago, Illinois. 6,131 bicycles can be rented from and return to 620 stations. Given that the number of bicycles at each station is relatively limited, it is meaningful to predict the renting time of each bicycle so as to reasonably arrange the resting bicycles.
+
+Our project aims to predict the trip duration time of each Divvy Bike trip in 2018 using a set of covariates that can be abtained at the start of the trip, including information of the trip itself (time and start place) and the user (gender, age, and membership type).
+
+# Data Description and Pre-processing
+The dataset we used was the Divvy data set, which contained Divvy Bikes’ using information in 2018. 2,981,032 samples (trips) were recorded. For each trip, there was information of start and end time and station, as well as information of the user. The original variables are shown in the following table:
+
 Variable name    | Variable label
 -----------------|---------------
 trip_id          | trip ID
@@ -17,8 +29,15 @@ from_station_name| name of the station where the trip starts. There are 620 diff
 usertype         | user type. Can be either subscriber (Annual Members) or customer (users who bought single ride or one-day pass)
 Gender           | gender of the user
 Season           | in which season the trip took place.
+start_time       | start date and time of the trip
+
+To make full use of the variables, we extracted two variables from the original {start_time}, as shown below:
+
+Variable name    | Variable label
+-----------------|---------------
 Start_time_cat   | in which time slot of a day the trip took place
 weekends| indicator of whether the trip happens on weekends
+# Approach and Results
 
 ## Linear Model
 
