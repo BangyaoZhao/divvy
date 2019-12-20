@@ -26,25 +26,34 @@ The dataset we used was the Divvy data set, which contained Divvy Bikes’ using
 
 ![Figure 1: map of Divvy Bikes stations](../plots/mapbox.png)
 
-The original variables are shown in Table:
+The original variables are listed in the table below:
 
 Variable name    | Variable label
 -----------------|---------------
 trip_id          | trip ID
 tripduration     | end_time - start_time, in minutes.
 Age              | age of user
+from_station_id  | ID of the station where the trip starts. There are 620 different stations.                              
 from_station_name| name of the station where the trip starts. There are 620 different stations.                              
 usertype         | user type. Can be either subscriber (Annual Members) or customer (users who bought single ride or one-day pass)
 Gender           | gender of the user
-Season           | in which season the trip took place.
 start_time       | start date and time of the trip
 
-To make full use of the variables, we extracted two variables from the original {start_time}, as shown below:
+To make full use of the variables, we extracted three variables from the original $start\_time$, as shown below:
 
 Variable name    | Variable label
 -----------------|---------------
+Season           | in which season the trip took place. Winter: Sept. - Feb., Spring:  Mar. - May, etc.
 Start_time_cat   | in which time slot of a day the trip took place
-weekends| indicator of whether the trip happens on weekends
+weekends         | indicator of whether the trip happens on weekends
+
+To reduce dimension of the categorical variable $from\_station\_name$, we searched for information of the stations on the Divvy Bikes webpage and found data for all the stations, where we had:
+Variable name    | Variable label
+-----------------|---------------
+ID               | ID of the station
+Latitude         | latitude of fr
+Longitude        |
+
 # Approach and Results
 
 ## Linear Model
