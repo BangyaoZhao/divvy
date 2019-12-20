@@ -23,7 +23,7 @@ fitControl <- trainControl(
 ) 
 model <- train(tripduration ~ factor(from_station_id)+usertype+gender+factor(season)+age+hour+factor(day_of_week), data = trips_train[1:10,], method = "rf",metric="RMSE", trControl = fitControl)
 stopCluster(cl)
-
+save.image(file="rf.RData")
 
 
 # method=rf,	treebag, bagEarth, rpart, gaussprRadial, knn, svmRadial
