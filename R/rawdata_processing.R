@@ -36,9 +36,31 @@ day_of_week = 1 * (day_of_week == "Monday") +
   7 * (day_of_week == "Sunday")
 data$day_of_week = day_of_week
 
-#----
-#create 
+#convert the tripduration to mins
+data$tripduration=data$tripduration/60
 
+
+#----
+#create cluster
+divvydata <- read.csv("data/Divvy_Bicycle_Stations.csv")
+loc <- divvydata[, c("ID", "Latitude", "Longitude")] # unique locations the stations
+rownames(loc) <- loc[,1]
+loc <- loc[, 2:3]
+
+cl10 <- sapply(seq(10, 100, 10), function(x){ # 10 to 100
+  c <- kmeans(loc, x, iter.max = 20, nstart = 25)
+  return(c$tot.withinss)                      # get total within cluster variance
+})
+png("plots/totwithinss.png")                  # choose K
+plot(seq(10, 100, 10), cl10, type = "l", xlab = "number of clusters",
+     ylab = "total within variance")
+dev.off()
+
+# decide on K = 40
+cl40 <- kmeans(loc, 40, iter.max = 20, nstart = 25)
+loc_new <- cbind(ID = rownames(loc), loc, clusterID = cl40$cluster)
+data_cl <- merge(data, loc_new, by.x = "from_station_id", by.y = "ID")
+data <- data_cl
 
 
 

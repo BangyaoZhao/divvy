@@ -1,1 +1,0 @@
-divvydata <- readRDS(file = "data/newdata_addlocationdock.rds")

@@ -9,6 +9,10 @@ output:
    theme: hpstr
   html_document: default
 ---
+```{r include=FALSE}
+library(bigmemory)
+library(biganalytics)
+```
 The report is clearly written and sufficiently introduces the dataset of choice, the question of interest, the approach taken, and the results.
 # Introduction
 Bicycle sharing programs are getting popular today. They offer a convenient and affordable way to get around the city for both residents and tourists. Riding a bicycle is a fun exercise, and it is an environment-friendly transportation.
@@ -53,41 +57,16 @@ After successfully fitting the model, we looked at the residual plot
 
 ### Constant Variance issue
 
-Let's have a look at the residuals:
-
-```
-res <- readRDS("../results/res.rds")
-plot(res)
-```
-
-As we can see, the constant variance assumption seems violated in the model, so we decided to use transformation to fix the problem, we finally chose the square root function. 
+Let's have a look at the qqplot:
+![](../plots/qqplot.png)
+As we can see, the normality assumption seems violated in the model, so we decided to use transformation to fix the problem, we finally chose the square root function. 
 
 ### Results
 ```
-library(bigmemory)
-library(biganalytics)
 res1 <- readRDS("../results/res1.rds")
 summary(res1)
 ```
 As we can see, even after fixing the transformation, the $R^2=0.0432$ is still unsatisfactory, which means linear model may not be a perfect fit for this problem, so we decide to switch to other advanced non-parametric machine learning models. 
 
 
-## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
