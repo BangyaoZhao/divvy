@@ -22,7 +22,11 @@ The Divvy Bikes is a bike sharing program in Chicago, Illinois. 6,131 bicycles c
 Our project aims to predict the trip duration time of each Divvy Bike trip in 2018 using a set of covariates that can be abtained at the start of the trip, including information of the trip itself (time and start place) and the user (gender, age, and membership type).
 
 # Data Description and Pre-processing
-The dataset we used was the Divvy data set, which contained Divvy Bikes’ using information in 2018. 2,981,032 samples (trips) were recorded. For each trip, there was information of start and end time and station, as well as information of the user. The original variables are shown in the following table:
+The dataset we used was the Divvy data set, which contained Divvy Bikes’ using information in 2018. 2,981,032 samples (trips) were recorded. For each trip, there was information of start and end time and station, as well as information of the user. Figure 1 shows a map of all the stations.
+
+![Figure 1: map of Divvy Bikes stations](../plots/mapbox.png)
+
+The original variables are shown in Table:
 
 Variable name    | Variable label
 -----------------|---------------
