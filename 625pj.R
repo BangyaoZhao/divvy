@@ -6,10 +6,13 @@ trips$tripduration=trips$tripduration/60
 stations=read.csv("/Users/sunyichi/Documents/GitHub/divvy/Divvy_Bicycle_Stations.csv")
 names(stations)[1]="from_station_id"
 stations=stations[,c(1,5,7,8,9)]
-merge(trips,stations,by="id")
+newdata=merge(trips,stations,by="from_station_id")
+saveRDS(newdata,file="/Users/sunyichi/Documents/GitHub/divvy/newdata_addlocationdock.rds")
 
-
-
+library(ggmap)
+myLocation <- c(lon = 41.8781, lat = 87.6298)
+myMap <- get_map(location=myLocation,source="stamen", maptype="watercolor",crop=FALSE)
+                 
 
 smp_size=0.5*dim(trips)[1]
 train_ind <- sample(seq_len(dim(trips)[1]), size = smp_size)
@@ -17,6 +20,8 @@ train <- trips[train_ind, ]
 test <- trips[-train_ind, ]
 saveRDS(train,file="/Users/sunyichi/Documents/GitHub/divvy/workingdata_train.rds")
 saveRDS(test,file="/Users/sunyichi/Documents/GitHub/divvy/workingdata_test.rds")
+
+
 
 
 trips_train=readRDS("/Users/sunyichi/Documents/GitHub/divvy/workingdata_train.rds")
