@@ -1,7 +1,7 @@
 library(bigmemory)
 library(biganalytics)
 #load trainning data
-workingdata_train <- readRDS("workingdata_train.rds")
+workingdata_train <- readRDS("data/workingdata_train.rds")
 
 #fit linear model by lm()
 #----
@@ -52,6 +52,14 @@ res2 = biglm.big.matrix(
   fc = c("season", "from_station_id", "hour", "day_of_week")
 )
 
+
+#use the clustered data to directly run
+#----
+res3 = lm(
+  I(sqrt(tripduration)) ~ usertype + gender + factor(season) + age + factor(clusterID) +
+    factor(hour) + factor(day_of_week),data = workingdata_train
+)
+
 #save files
 #----
 saveRDS(res,file = "results/res.rds")
@@ -59,6 +67,12 @@ saveRDS(res_sqrt,file = "results/res_sqrt.rds")
 saveRDS(res_log,file = "results/res_log.rds")
 saveRDS(res1,file = "results/res1.rds")
 saveRDS(res2,file = "results/res2.rds")
+
+
+
+
+
+
 
 
 
