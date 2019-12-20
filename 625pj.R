@@ -1,5 +1,16 @@
+#######################################
+################# EDA ################
+#######################################
 trips=readRDS("/Users/sunyichi/Documents/GitHub/divvy/workingdata_normal.rds")
 trips$tripduration=trips$tripduration/60
+stations=read.csv("/Users/sunyichi/Documents/GitHub/divvy/Divvy_Bicycle_Stations.csv")
+names(stations)[1]="from_station_id"
+stations=stations[,c(1,5,7,8,9)]
+merge(trips,stations,by="id")
+
+
+
+
 smp_size=0.5*dim(trips)[1]
 train_ind <- sample(seq_len(dim(trips)[1]), size = smp_size)
 train <- trips[train_ind, ]
