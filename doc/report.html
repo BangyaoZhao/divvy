@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -331,6 +330,7 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -371,8 +371,8 @@ summary {
 
 <table>
 <colgroup>
-<col width="48%"></col>
-<col width="51%"></col>
+<col width="53%"></col>
+<col width="46%"></col>
 </colgroup>
 <thead>
 <tr class="header">
@@ -419,6 +419,31 @@ summary {
 </tr>
 </tbody>
 </table>
+<div id="linear-model" class="section level2">
+<h2>Linear Model</h2>
+<p>Linear regression is an approach to identify linear relationship between a response and explanatory variables. We use linear regression to start an exploratory research so as to identify significant predictors.</p>
+<p><span class="math display">\[tripduration=X\beta+\varepsilon,\ \varepsilon\sim N(0,\sigma^2)\]</span></p>
+<div id="memory-issue" class="section level3">
+<h3>Memory issue</h3>
+<p>Our design matrix <span class="math inline">\(X\)</span> is of dimension <span class="math inline">\(1490516\times 653\)</span> due to the presence of categorical variables, which is too large to fit the matrix in the memory. When fitting the model, we were not able to fit the model by <code>lm()</code> function. We solve this problem by using the bigmemory package.</p>
+<p>After successfully fitting the model, we looked at the residual plot</p>
+</div>
+<div id="constant-variance-issue" class="section level3">
+<h3>Constant Variance issue</h3>
+<p>Let’s have a look at the residuals:</p>
+<pre><code>res &lt;- readRDS(&quot;../results/res.rds&quot;)
+plot(res)</code></pre>
+<p>As we can see, the constant variance assumption seems violated in the model, so we decided to use transformation to fix the problem, we finally chose the square root function.</p>
+</div>
+<div id="results" class="section level3">
+<h3>Results</h3>
+<pre><code>library(bigmemory)
+library(biganalytics)
+res1 &lt;- readRDS(&quot;../results/res1.rds&quot;)
+summary(res1)</code></pre>
+<p>As we can see, even after fixing the transformation, the <span class="math inline">\(R^2=0.0432\)</span> is still unsatisfactory, which means linear model may not be a perfect fit for this problem, so we decide to switch to other advanced non-parametric machine learning models.</p>
+</div>
+</div>
 <div id="r-markdown" class="section level2">
 <h2>R Markdown</h2>
 <p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
