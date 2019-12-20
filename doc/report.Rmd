@@ -84,11 +84,10 @@ Let's have a look at the qqplot:
 As we can see, the normality assumption seems violated in the model, so we decided to use transformation to fix the problem, we finally chose the square root function. 
 
 ### Results
-```
-res1 <- readRDS("../results/res1.rds")
-summary(res1)
-```
-As we can see, even after fixing the transformation, the $R^2=0.0432$ is still unsatisfactory, which means linear model may not be a perfect fit for this problem, so we decide to switch to other advanced non-parametric machine learning models. 
 
+Even after fixing the transformation, the $R^2=0.058$ is still unsatisfactory, which means linear model may not be a perfect fit for this problem, so we decide to switch to other advanced non-parametric machine learning models. 
 
+### K-mean method
+
+Another method to overcome the computational challenge
 
