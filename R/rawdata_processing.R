@@ -19,6 +19,20 @@ range = quantile(data$tripduration, seq(0, 1, 0.01))[c(2, 100)]
 data = filter(data, tripduration >= range[1] &
                 tripduration <= range[2])
 
+#obtain seasons
+months = as.Date(data$start_time)
+months = months(months, abbreviate = T)
+Winter = months %in% c("Dec", "Jan", "Feb")
+Spring = months %in% c("Mar", "Apr", "May")
+Summer = months %in% c("Jun", "Jul", "Aug")
+Fall = months %in% c("Sep", "Oct", "Nov")
+season = rep("", length(months))
+season[Spring] = "Spring"
+season[Summer] = "Summer"
+season[Fall] = "Fall"
+season[Winter] = "Winter"
+data$season = season
+
 #create hour
 hour = as.character(data$start_time)
 hour = as.numeric(substring(hour, 12, 13))
@@ -59,14 +73,19 @@ dev.off()
 # decide on K = 40
 cl40 <- kmeans(loc, 40, iter.max = 20, nstart = 25)
 loc_new <- cbind(ID = rownames(loc), loc, clusterID = cl40$cluster)
-data_cl <- merge(data, loc_new, by.x = "from_station_id", by.y = "ID")
-data <- data_cl
+data <- merge(data, loc_new, by.x = "from_station_id", by.y = "ID")
+
+#----
+#combine information
+divvydata <- read.csv("data/Divvy_Bicycle_Stations.csv")
+divvydata=divvydata[,c("ID","Docks.in.Service")]
+data <- merge(data, divvydata, by.x = "from_station_id", by.y = "ID")
 
 #----
 #divide data into train and test
 set.seed(1519)
-trains <- sample(1:nrow(data), nrow(data)/2)
-traindata <- data[trains, ]
-testdata <- data[!(1:nrow(data) %in% trains), ]
-saveRDS(traindata, file = "data/workingdata_train.rds")
-saveRDS(testdata, file = "data/workingdata_test.rds")
+trains <- sample(1:nrow(data), floor(nrow(data)/2))
+workingdata_train <- data[trains, ]
+workingdata_test <- data[!(1:nrow(data) %in% trains), ]
+saveRDS(workingdata_train, file = "data/workingdata_train.rds")
+saveRDS(workingdata_test, file = "data/workingdata_test.rds")
