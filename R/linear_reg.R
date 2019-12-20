@@ -26,7 +26,7 @@ sum1 = summary(res1)
 
 #residual plot(Model adequacy check)
 #----
-workingdata_train2 = workingdata_train[sample(nrow(workingdata_train), 30000), ]
+workingdata_train2 = workingdata_train[sample(nrow(workingdata_train), 30000),]
 res = lm(
   tripduration ~ usertype + gender + factor(season) + age + factor(from_station_id) +
     factor(hour) + factor(day_of_week),
@@ -57,34 +57,14 @@ res2 = biglm.big.matrix(
 #----
 res3 = lm(
   I(sqrt(tripduration)) ~ usertype + gender + factor(season) + age + factor(clusterID) +
-    factor(hour) + factor(day_of_week),data = workingdata_train
+    factor(hour) + factor(day_of_week),
+  data = workingdata_train
 )
 
 #save files
 #----
-saveRDS(res,file = "results/res.rds")
-saveRDS(res_sqrt,file = "results/res_sqrt.rds")
-saveRDS(res_log,file = "results/res_log.rds")
-saveRDS(res1,file = "results/res1.rds")
-saveRDS(res2,file = "results/res2.rds")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+saveRDS(res, file = "results/res.rds")
+saveRDS(res_sqrt, file = "results/res_sqrt.rds")
+saveRDS(res_log, file = "results/res_log.rds")
+saveRDS(res1, file = "results/res1.rds")
+saveRDS(res2, file = "results/res2.rds")
