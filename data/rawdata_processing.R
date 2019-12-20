@@ -36,6 +36,10 @@ day_of_week = 1 * (day_of_week == "Monday") +
   7 * (day_of_week == "Sunday")
 data$day_of_week = day_of_week
 
+#convert the tripduration to mins
+data$tripduration=data$tripduration/60
+
+
 #----
 #create 
 
