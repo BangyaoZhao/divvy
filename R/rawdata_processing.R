@@ -62,5 +62,11 @@ loc_new <- cbind(ID = rownames(loc), loc, clusterID = cl40$cluster)
 data_cl <- merge(data, loc_new, by.x = "from_station_id", by.y = "ID")
 data <- data_cl
 
-
-
+#----
+#divide data into train and test
+set.seed(1519)
+trains <- sample(1:nrow(data), nrow(data)/2)
+traindata <- data[trains, ]
+testdata <- data[!(1:nrow(data) %in% trains), ]
+saveRDS(traindata, file = "data/workingdata_train.rds")
+saveRDS(testdata, file = "data/workingdata_test.rds")
