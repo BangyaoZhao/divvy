@@ -26,7 +26,7 @@ sum1 = summary(res1)
 
 #residual plot(Model adequacy check)
 #----
-workingdata_train2 = workingdata_train[sample(nrow(workingdata_train), 30000),]
+workingdata_train2 = workingdata_train[sample(nrow(workingdata_train), 30000), ]
 res = lm(
   tripduration ~ usertype + gender + factor(season) + age + factor(from_station_id) +
     factor(hour) + factor(day_of_week),
@@ -56,7 +56,7 @@ res2 = biglm.big.matrix(
 #use the clustered data to directly run
 #----
 res3 = lm(
-  I(sqrt(tripduration)) ~ usertype + gender + factor(season) + age + factor(clusterID) +
+  I(sqrt(tripduration)) ~ usertype + gender + factor(season) + age + Docks.in.Service + factor(clusterID) +
     factor(hour) + factor(day_of_week),
   data = workingdata_train
 )
