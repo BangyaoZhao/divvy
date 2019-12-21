@@ -29,9 +29,8 @@
 #'
 #'Delete data with start stations not in the list
 #'observations:3002639
-#'###########################12202038
 #'stations:602
-#'bikes:6130
+
 #'
 #'
 #'workingdata_train

@@ -30,6 +30,8 @@ data=filter(data,age<=75)
 divvydata <- read.csv("data/Divvy_Bicycle_Stations.csv")
 divvydata2 = divvydata[,c("ID","Docks.in.Service")]
 data <- merge(data, divvydata2, by.x = "from_station_id", by.y = "ID")
+# length(unique(data$from_station_id))
+# 602
 
 #obtain seasons
 months = as.Date(data$start_time)
