@@ -19,14 +19,16 @@
 #'stations:619
 #'bikes:6131
 
-3005668 - 3004275
-# 1393
+3005668 - 3003261
+# 2407
 
 #'Delete age>75
 #'observations:3003261
 #'stations:619
 
-#'
+3003261 - 3002639
+# 622
+
 #'Delete data with start stations not in the list
 #'observations:3002639
 #'stations:602
@@ -34,7 +36,7 @@
 #'
 #'
 #'workingdata_train
-#'observations:1501320
+#'observations:1501319
 #'
 #'workingdata_test
 #'observations:1501320

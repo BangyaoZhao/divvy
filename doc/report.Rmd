@@ -50,7 +50,7 @@ Season           | in which season the trip took place. Winter: Sept. - Feb., Sp
 Start_time_cat   | in which time slot of a day the trip took place
 weekends         | indicator of whether the trip happens on weekends
 
-To reduce dimension of the categorical variable $from\_station\_name$, we searched for information of the stations on the Divvy Bikes webpage and found data for all the stations, where we had:
+To reduce dimension of the categorical variable $from\_station\_name$, we searched for information of the stations on the Divvy Bikes webpage and found location and scale for 611 stations, where we had:
 Variable name    | Variable label
 -----------------|---------------
 ID               | ID of the station
@@ -67,11 +67,18 @@ The total within cluster variance decreases sharply at first, but after K larger
 ## Data Cleaning
 We first deleted data with user's age or gender missing. 562,565 out of 3,603,082 trips were deleted. We also noticed 2 out of 621 stations did not have any trips left.
 
-Among the 3,005,668 remaining trips, some had very short duration time and were unlikely to be normal trips, so we deleted trips that were shorter than half a minute ($tripduration < 0.5$). 34,849 trips were deleted in this step.
+Among the 3,040,517 remaining trips, some had very short duration time and were unlikely to be normal trips, so we deleted trips that were shorter than half a minute ($tripduration < 0.5$). 34,849 trips were deleted in this step.
 
 We also noticed that some users had implausibly large age, some users being older than 100. We drew a histogram of user's age, as shown in Figure 3.
 
 ![Figure 3. Histogram of user's age](../plots/HistOfAge.png)
+
+From Figure 3, we can see that there are very few people older than 75, so we further deleted these people. In this step, 2,407 out of 3,005,668 trips were deleted.
+
+To make use of the station information we found on the Divvy Bikes website, we only wanted to include stations in the station table, so we excluded the trips starting from stations other than the 611 stations which we had location and scale information. 17 out of 619 stations were excluded, which resulted in the deletion of 622 trips.
+
+## Data Partition
+We divided the data set equally into two parts, training data (1,501,319 trips) and testing data (1,501,320 trips).
 
 
 # Approach and Results
