@@ -2,6 +2,7 @@ methods = c("svmRadial", "treebag", "rpart", "gaussprRadial", "knn", "rf")
 i = Sys.getenv("SLURM_ARRAY_TASK_ID")
 i = as.numeric(i)
 method = methods[i]
+i
 
 trips_train = readRDS("../data/workingdata_train.rds")
 set.seed(625)
