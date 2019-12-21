@@ -63,6 +63,7 @@ Based on these data, we used K-means clustering method to partition the stations
 
 ![Figure 2. total within cluster variance under different number of groups](../plots/totwithinss.png)
 
+The total within cluster variance decreases sharply at first, but after K larger than 40, it becomes relatively steady. So we set K = 40, run the K-means clustering method, and obtained a cluster ID for every station, where there were 40 unique cluster ID.
 # Approach and Results
 
 ## Linear Model
