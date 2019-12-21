@@ -34,11 +34,7 @@
 #'
 #'
 #'workingdata_train
-#'observations:1501826
-#'stations:602
-#'bikes:6129
+#'observations:1501320
 #'
 #'workingdata_test
-#'observations:1501827
-#'stations:600
-#'bikes:6128
+#'observations:1501320
