@@ -4,11 +4,12 @@ subtitle: "real-time prediction of bicycle riding-time in the big data setting"
 author: "Bangyao Zhao, Xuemei Ding, Sunyi Chi"
 date: "2019/12/22"
 output:
-  html_document: default
   prettydoc::html_pretty:
    highlight: github
    theme: hpstr
+  html_document: default
 ---
+
 ```{r include=FALSE}
 library(bigmemory)
 library(biganalytics)
