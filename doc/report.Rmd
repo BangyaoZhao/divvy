@@ -80,7 +80,9 @@ We also noticed that some users had implausibly large age, some users being olde
 
 From Figure 4, we can see that there are very few people older than 75, so we further deleted these people. In this step, 2,407 out of 3,005,668 trips were deleted.
 
-To make use of the station information we found on the Divvy Bikes website, we only wanted to include stations in the station table, so we excluded the trips starting from stations other than the 611 stations which we had location and scale information. 17 out of 619 stations were excluded, which resulted in the deletion of 622 trips.
+To make use of the station information we found on the Divvy Bikes website, we only wanted to include stations in the station table, so we excluded the trips starting from stations other than the 611 stations which we had location and scale information. 17 out of 619 stations were excluded, which resulted in the deletion of 622 trips. 
+
+After data cleaning, we ended with a data set of 3,002,639 trips.
 
 ## Data Partition
 We divided the data set equally into two parts, training data (1,501,319 trips) and testing data (1,501,320 trips).
