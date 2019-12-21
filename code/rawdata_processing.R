@@ -17,6 +17,14 @@ data = filter(data,!is.na(age) & !is.na(gender) & gender != "")
 #discard abnormal data
 data = filter(data, tripduration >= 30)
 
+png("plots/HistOfAge.png")
+hist(data$age)
+dev.off()
+#delete abnormal age
+data=filter(data,age<=80)
+# length(unique(data$from_station_id))
+# 619
+
 #obtain seasons
 months = as.Date(data$start_time)
 months = months(months, abbreviate = T)
@@ -83,9 +91,6 @@ data <- merge(data, loc_new, by.x = "from_station_id", by.y = "ID")
 divvydata2 = divvydata[,c("ID","Docks.in.Service")]
 data <- merge(data, divvydata2, by.x = "from_station_id", by.y = "ID")
 
-#----
-#delete abnormal age
-data=filter(data,age<=80)
 
 
 #----

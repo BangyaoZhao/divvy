@@ -17,14 +17,14 @@ The report is clearly written and sufficiently introduces the dataset of choice,
 # Introduction
 Bicycle sharing programs are getting popular today. They offer a convenient and affordable way to get around the city for both residents and tourists. Riding a bicycle is a fun exercise, and it is an environment-friendly transportation.
 
-The Divvy Bikes is a bike sharing program in Chicago, Illinois. 6,131 bicycles can be rented from and return to 620 stations. Given that the number of bicycles at each station is relatively limited, it is meaningful to predict the renting time of each bicycle so as to reasonably arrange the resting bicycles.
+The Divvy Bikes is a bike sharing program in Chicago, Illinois. 6,133 bicycles can be rented from and return to 621 stations. Given that the number of bicycles at each station is relatively limited, it is meaningful to predict the renting time of each bicycle so as to reasonably arrange the resting bicycles.
 
 Our project aims to predict the trip duration time of each Divvy Bike trip in 2018 using a set of covariates that can be abtained at the start of the trip, including information of the trip itself (time and start place) and the user (gender, age, and membership type).
 
 # Data Description and Pre-processing
 
 ## Data Description 
-The dataset we used was the Divvy data set, which contained Divvy Bikes’ using information in 2018. 2,981,032 samples (trips) were recorded. For each trip, there was information of start and end time and station, as well as information of the user. Figure 1 shows a map of all the stations.
+The dataset we used was the Divvy data set, which contained Divvy Bikes’ using information in 2018. 3,603,082 samples (trips) were recorded. For each trip, there was information of start and end time and station, as well as information of the user. Figure 1 shows a map of all the stations.
 
 ![Figure 1. map of Divvy Bikes stations](../plots/mapbox.png)
 
@@ -65,7 +65,11 @@ Based on these data, we used K-means clustering method to partition the stations
 
 The total within cluster variance decreases sharply at first, but after K larger than 40, it becomes relatively steady. So we set K = 40, run the K-means clustering method, and obtained a cluster ID for every station, where there were 40 unique cluster ID.
 ## Data Cleaning
-We first deleted data with user age or gender missing.
+We first deleted data with user age or gender missing. 562,565 out of 3,603,082 trips were deleted. We also noticed 2 out of 621 stations did not have any trips left.
+
+Among the 3,005,668 remaining trips, some had very short duration time and were unlikely to be normal trips, so we deleted trips that were shorter than half a minute ($tripduration < 0.5$). 34,849 trips were deleted in this step.
+
+We also noticed that some 
 # Approach and Results
 
 ## Linear Model
