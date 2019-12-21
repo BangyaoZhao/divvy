@@ -8,7 +8,7 @@ trips_train = readRDS("../data/workingdata_train.rds")
 set.seed(625)
 library(caret)
 library(doParallel)
-cl <- makePSOCKcluster(20)
+cl <- makePSOCKcluster(100)
 registerDoParallel(cl)
 ## All subsequent models are then run in parallel
 fitControl <- trainControl(method = 'cv',
