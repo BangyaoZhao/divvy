@@ -4,10 +4,10 @@ subtitle: "real-time prediction of bicycle riding-time in the big data setting"
 author: "Bangyao Zhao, Xuemei Ding, Sunyi Chi"
 date: "2019/12/22"
 output:
+  html_document: default
   prettydoc::html_pretty:
    highlight: github
    theme: hpstr
-  html_document: default
 ---
 ```{r include=FALSE}
 library(bigmemory)
@@ -41,7 +41,7 @@ usertype         | user type. Can be either subscriber (Annual Members) or custo
 Gender           | gender of the user
 start_time       | start date and time of the trip
 
-## Preprocessing
+## Variable Transformation
 To make full use of the variables, we extracted three variables from the original $start\_time$, as shown below:
 
 Variable name    | Variable label
@@ -63,6 +63,9 @@ Based on these data, we used K-means clustering method to partition the stations
 
 ![Figure 2. total within cluster variance under different number of groups](../plots/totwithinss.png)
 
+The total within cluster variance decreases sharply at first, but after K larger than 40, it becomes relatively steady. So we set K = 40, run the K-means clustering method, and obtained a cluster ID for every station, where there were 40 unique cluster ID.
+## Data Cleaning
+We first deleted data with user age or gender missing.
 # Approach and Results
 
 ## Linear Model
@@ -87,7 +90,25 @@ As we can see, the normality assumption seems violated in the model, so we decid
 
 Even after fixing the transformation, the $R^2=0.058$ is still unsatisfactory, which means linear model may not be a perfect fit for this problem, so we decide to switch to other advanced non-parametric machine learning models. 
 
-### K-mean method
+## K-mean method
 
 Another method to overcome the computational challenge
+
+## Non-parametric Model and parallel computing in cluster
+
+
+
+
+#Results
+## Prediction Results
+
+
+## Interactive web apps
+
+
+
+
+
+
+
 

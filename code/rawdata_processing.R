@@ -70,14 +70,18 @@ dev.off()
 
 # decide on K = 40
 cl40 <- kmeans(loc, 40, iter.max = 20, nstart = 25)
+all.equal(rownames(loc), names(cl40$cluster)) # TRUE
 loc_new <- cbind(ID = rownames(loc), loc, clusterID = cl40$cluster)
+divvydata <- merge(divvydata, cbind(ID = rownames(loc), clusterID = cl40$cluster), 
+                                    by = "ID")
+write.csv(divvydata, "data/Divvy_Bicycle_Stations2.csv", na = "")
 data <- merge(data, loc_new, by.x = "from_station_id", by.y = "ID")
 
 #----
 #combine information
-divvydata <- read.csv("data/Divvy_Bicycle_Stations.csv")
-divvydata=divvydata[,c("ID","Docks.in.Service")]
-data <- merge(data, divvydata, by.x = "from_station_id", by.y = "ID")
+# divvydata <- read.csv("data/Divvy_Bicycle_Stations.csv")
+divvydata2 = divvydata[,c("ID","Docks.in.Service")]
+data <- merge(data, divvydata2, by.x = "from_station_id", by.y = "ID")
 
 #----
 #delete abnormal age
