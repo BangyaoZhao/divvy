@@ -15,9 +15,7 @@ data$age = 2018 - as.numeric(data$birthyear)
 data = filter(data,!is.na(age) & !is.na(gender) & gender != "")
 
 #discard abnormal data
-range = quantile(data$tripduration, seq(0, 1, 0.01))[c(2, 100)]
-data = filter(data, tripduration >= range[1] &
-                tripduration <= range[2])
+data = filter(data, tripduration >= 30)
 
 #obtain seasons
 months = as.Date(data$start_time)
@@ -80,6 +78,11 @@ data <- merge(data, loc_new, by.x = "from_station_id", by.y = "ID")
 divvydata <- read.csv("data/Divvy_Bicycle_Stations.csv")
 divvydata=divvydata[,c("ID","Docks.in.Service")]
 data <- merge(data, divvydata, by.x = "from_station_id", by.y = "ID")
+
+#----
+#delete abnormal age
+data=filter(data,age<=80)
+
 
 #----
 #divide data into train and test
