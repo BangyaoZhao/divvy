@@ -76,8 +76,8 @@ The final model has an $MSE=52.23$
 
 ### Constant Variance issue
 
-Let's have a look at the qqplot:
-![](../plots/qqplot.png)
+The q-q plot is shown in Figure 3.
+
 As we can see, the normality assumption seems violated in the model, so we decided to use transformation to fix the problem, we finally chose the square root function. 
 
 ### Results
@@ -101,7 +101,7 @@ Even after fixing the transformation, the $MSE=40.58$ is still unsatisfactory, w
 ![Figure 1. Map of Divvy Bikes stations](../plots/mapbox_black.png)
 
 ![Figure 2. Total within cluster variance under different number of groups](../plots/totwithinss.png)
-
+![Figure 3. q-q Plot of the Linear Model](../plots/qqplot.png)
 ![Figure 3. Map of Divvy Bikes stations, where spots in different colors represent stations in different clusters](../plots/mapbox.png)
 
 ![Figure 4. Histogram of users' age](../plots/HistOfAge.png)
