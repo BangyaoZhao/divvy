@@ -26,39 +26,16 @@ Our project aims to predict the trip duration time of each Divvy Bike trip in 20
 # Data Description and Pre-processing
 
 ## Data Description 
-The dataset we used was the Divvy data set, which contained Divvy Bikes’ using information in 2018. 3,603,082 samples (trips) were recorded. For each trip, there was information of start and end time and station, as well as information of the user. Figure 1 shows a map of all the stations.
-
-
-
-The original variables are listed in Table 1.
-
+The dataset we used was the Divvy data set, which contained Divvy Bikes’ using information in 2018. 3,603,082 samples (trips) were recorded. For each trip, there was information of start and end time and station, as well as information of the user. Figure 1 shows a map of all the stations, and the original variables are listed in Table 1.
 
 ## Variable Transformation
-To make full use of the variables, we extracted three variables from the original $start\_time$, as shown below:
+To make full use of the variables, we extracted three variables from the original $start\_time$, as shown in Table 2.
 
-Variable name    | Variable label
------------------|---------------
-Season           | in which season the trip took place. Winter: Dec. - Feb., Spring:  Mar. - May, etc.
-Start_time_cat   | in which time slot of a day the trip took place
-weekends         | indicator of whether the trip happened on weekends
-
-To reduce dimension of the categorical variable $from\_station\_name$, we searched for information of the stations on the Divvy Bikes webpage and found location and scale for 611 stations, where we had:
-
-Variable name    | Variable label
------------------|---------------
-ID               | station ID
-Station.Name     | station name
-Latitude         | station latitude
-Longitude        | station longitude
-Total.Docks      | number of bikes at this station
+To reduce dimension of the categorical variable $from\_station\_name$, we searched for information of the stations on the Divvy Bikes webpage and found ID, name, latitude, longitude, and number of bikes (variable name $Docks.in.Service$) for 611 stations.
 
 Based on these data, we used K-means clustering method to partition the stations by their locations. We first partitioned the stations into 10, 20, ..., 100 clusters (K = 10, 20, ..., 100) and caculated the total within cluster variance for each K. Then we  plotted the total within cluster variance against K and selected an optimal K by minimizing the total within cluster variance with a smallest K. Figure 2 shows the plot of total within cluster variance with K from 10 to 100.
 
-![Figure 2. Total within cluster variance under different number of groups](../plots/totwithinss.png)
-
 The total within cluster variance decreases sharply at first, but after K larger than 40, it becomes relatively steady. So we set K = 40, run the K-means clustering method, and partitioned the station into 40 distinct, non-overlapping clusters. The clustering results are displayed in Figure 3.
-
-![Figure 3. Map of Divvy Bikes stations, where spots in different colors represent stations in different clusters](../plots/mapbox.png)
 
 ## Data Cleaning
 We first deleted data with user's age or gender missing. 562,565 out of 3,603,082 trips were deleted. We also noticed 2 out of 621 stations did not have any trips left after this step.
@@ -67,7 +44,7 @@ Among the 3,040,517 remaining trips, some had very short duration time and were 
 
 We also noticed that some users had implausibly large age, some users being older than 100. We drew a histogram of user's age, as shown in Figure 4.
 
-![Figure 4. Histogram of user's age](../plots/HistOfAge.png)
+
 
 From Figure 4, we can see that there are very few people older than 75, so we further deleted these people. In this step, 2,407 out of 3,005,668 trips were deleted.
 
@@ -123,6 +100,12 @@ Another method to overcome the computational challenge
 
 ![Figure 1. Map of Divvy Bikes stations](../plots/mapbox_black.png)
 
+![Figure 2. Total within cluster variance under different number of groups](../plots/totwithinss.png)
+
+![Figure 3. Map of Divvy Bikes stations, where spots in different colors represent stations in different clusters](../plots/mapbox.png)
+
+![Figure 4. Histogram of users' age](../plots/HistOfAge.png)
+
 ## Tables
 
 Table 1: original variables in the Divvy Bikes data
@@ -138,7 +121,13 @@ usertype         | user type, either "Subscriber" (Annual Members) or "Customer"
 Gender           | gender of the user
 start_time       | start date and time of the trip
 
-
+Table 2: extracted information from $start\_time$
+---------------------------------
+Variable name    | Variable label
+-----------------|---------------
+Season           | in which season the trip took place. Winter: Dec. - Feb., Spring:  Mar. - May, etc.
+Start_time_cat   | in which time slot of a day the trip took place
+weekends         | indicator of whether the trip happened on weekends
 
 
 
