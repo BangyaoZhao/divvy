@@ -11,11 +11,7 @@ library(doParallel)
 cl <- makePSOCKcluster(20)
 registerDoParallel(cl)
 ## All subsequent models are then run in parallel
-fitControl <- trainControl(method = 'cv',
-                           # k-fold cross validation
-                           number = 5,
-                           # number of folds
-                           savePredictions = 'final')
+fitControl <- trainControl(method = 'none')
 model <-
   train(
     tripduration ~ factor(clusterID) + Docks.in.Service + usertype + gender +
