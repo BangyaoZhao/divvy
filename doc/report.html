@@ -174,7 +174,11 @@ code span.ot { color: #007020; }
 <div id="memory-issue" class="section level3">
 <h3>Memory issue</h3>
 <p>Our design matrix <span class="math inline">\(X\)</span> is of dimension <span class="math inline">\(1490516\times 653\)</span> due to the presence of categorical variables, which is too large to fit the matrix in the memory. When fitting the model, we were not able to fit the model by <code>lm()</code> function. We solve this problem by using the bigmemory package.</p>
-<p>After successfully fitting the model, we looked at the residual plot</p>
+</div>
+<div id="k-mean-method" class="section level3">
+<h3>K-mean Method</h3>
+<p>Using the K-mean method is another way to solve the Memory issue, which is to group the stations by their distance and reduce the number of dummy variables. When that is achieved, the design matrix will be thinner and able to put in memory.</p>
+<p>The final model has an <span class="math inline">\(MSE=52.23\)</span></p>
 </div>
 <div id="constant-variance-issue" class="section level3">
 <h3>Constant Variance issue</h3>
@@ -182,12 +186,8 @@ code span.ot { color: #007020; }
 </div>
 <div id="results" class="section level3">
 <h3>Results</h3>
-<p>Even after fixing the transformation, the <span class="math inline">\(R^2=0.058\)</span> is still unsatisfactory, which means linear model may not be a perfect fit for this problem, so we decide to switch to other advanced non-parametric machine learning models.</p>
+<p>Even after fixing the transformation, the <span class="math inline">\(MSE=40.58\)</span> is still unsatisfactory, which means linear model may not be a perfect fit for this problem, so we decide to switch to other advanced non-parametric machine learning models.</p>
 </div>
-</div>
-<div id="k-mean-method" class="section level2">
-<h2>K-mean method</h2>
-<p>Another method to overcome the computational challenge</p>
 </div>
 <div id="non-parametric-model-and-parallel-computing-in-cluster" class="section level2">
 <h2>Non-parametric Model and parallel computing in cluster</h2>
