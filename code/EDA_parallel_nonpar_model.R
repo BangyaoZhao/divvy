@@ -19,7 +19,7 @@ saveRDS(train,file="/Users/sunyichi/Documents/GitHub/divvy/workingdata_train.rds
 saveRDS(test,file="/Users/sunyichi/Documents/GitHub/divvy/workingdata_test.rds")
 ################################################
 ############## mapbox plot ####################
-trips=readRDS("/Users/sunyichi/Documents/GitHub/divvy/data/workingdata_normal.rds")
+stations=read.csv("/Users/sunyichi/Documents/GitHub/divvy/data/Divvy_Bicycle_Stations.csv")
 library(plotly)
 library(maps)
 library(ggmap)
@@ -40,14 +40,12 @@ p <- ggmap(get_googlemap(center = c(lon = -87.6298, lat = 41.8781),
                          maptype ='terrain',
                          color = 'color'))
 png('mapbox.png')
-p + geom_point(aes(x = stations$Longitude, y = stations$Latitude,colour=factor()), data = stations, size = 0.5) + 
-  theme(legend.position="bottom")
+p + geom_point(aes(x = stations$Longitude, y = stations$Latitude,colour=factor(stations$clusterID)), data = stations, size = 0.5, show.legend = F) 
 dev.off()
 
 
 myMap <- get_map(location=myLocation,source="osm", maptype="bw",crop=FALSE)
 ggmap(myMap)                 
-
 
 
 
