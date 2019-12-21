@@ -21,6 +21,8 @@ Our design matrix $X$ is of dimension $1490516\times 653$ due to the presence of
 
 Using the K-mean method (will be introduced later) is another way to solve the Memory issue, which is to group the stations by their distance and reduce the number of dummy variables. When that is achieved, the design matrix will be thinner and able to put in memory.
 
+The final model has an $MSE=52.23$
+
 ### Constant Variance issue
 
 Let's have a look at the qqplot:
@@ -29,4 +31,4 @@ As we can see, the normality assumption seems violated in the model, so we decid
 
 ### Results
 
-Even after fixing the transformation, the $R^2=0.058$ is still unsatisfactory, which means linear model may not be a perfect fit for this problem, so we decide to switch to other advanced non-parametric machine learning models. 
+Even after fixing the transformation, the $MSE=40.58$ is still unsatisfactory, which means linear model may not be a perfect fit for this problem, so we decide to switch to other advanced non-parametric machine learning models. 
