@@ -40,13 +40,12 @@ p <- ggmap(get_googlemap(center = c(lon = -87.6298, lat = 41.8781),
                          maptype ='terrain',
                          color = 'color'))
 png('mapbox.png')
-p + geom_point(aes(x = stations$Longitude, y = stations$Latitude,colour=factor(stations$clusterID)), data = stations, size = 0.5) 
+p + geom_point(aes(x = stations$Longitude, y = stations$Latitude,colour=factor(stations$clusterID)), data = stations, size = 0.5, show.legend = F) 
 dev.off()
 
 
 myMap <- get_map(location=myLocation,source="osm", maptype="bw",crop=FALSE)
 ggmap(myMap)                 
-
 
 
 
