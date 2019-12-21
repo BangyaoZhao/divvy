@@ -74,7 +74,7 @@ all.equal(rownames(loc), names(cl40$cluster)) # TRUE
 loc_new <- cbind(ID = rownames(loc), loc, clusterID = cl40$cluster)
 divvydata <- merge(divvydata, cbind(ID = rownames(loc), clusterID = cl40$cluster), 
                                     by = "ID")
-write.csv(divvydata, "data/Divvy_Bicycle_Stations2.csv", na = "")
+write.csv(divvydata, "data/Divvy_Bicycle_Stations.csv", na = "")
 data <- merge(data, loc_new, by.x = "from_station_id", by.y = "ID")
 
 #----
