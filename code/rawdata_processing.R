@@ -21,9 +21,15 @@ png("plots/HistOfAge.png")
 hist(data$age)
 dev.off()
 #delete abnormal age
-data=filter(data,age<=80)
+data=filter(data,age<=75)
 # length(unique(data$from_station_id))
 # 619
+
+#----
+#combine information
+divvydata <- read.csv("data/Divvy_Bicycle_Stations.csv")
+divvydata2 = divvydata[,c("ID","Docks.in.Service")]
+data <- merge(data, divvydata2, by.x = "from_station_id", by.y = "ID")
 
 #obtain seasons
 months = as.Date(data$start_time)
@@ -62,7 +68,7 @@ data$tripduration=data$tripduration/60
 
 #----
 #create cluster
-divvydata <- read.csv("data/Divvy_Bicycle_Stations.csv")
+# divvydata <- read.csv("data/Divvy_Bicycle_Stations.csv")
 loc <- divvydata[, c("ID", "Latitude", "Longitude")] # unique locations the stations
 rownames(loc) <- loc[,1]
 loc <- loc[, 2:3]
@@ -85,11 +91,6 @@ divvydata <- merge(divvydata, cbind(ID = rownames(loc), clusterID = cl40$cluster
 write.csv(divvydata, "data/Divvy_Bicycle_Stations.csv", na = "")
 data <- merge(data, loc_new, by.x = "from_station_id", by.y = "ID")
 
-#----
-#combine information
-# divvydata <- read.csv("data/Divvy_Bicycle_Stations.csv")
-divvydata2 = divvydata[,c("ID","Docks.in.Service")]
-data <- merge(data, divvydata2, by.x = "from_station_id", by.y = "ID")
 
 
 

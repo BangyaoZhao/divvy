@@ -22,13 +22,14 @@
 3005668 - 3004275
 # 1393
 
-#'Delete age>80
-#'observations:3004275
-#'stations:602
+#'Delete age>75
+#'observations:3003261
+#'stations:619
 
 #'
 #'Delete data with start stations not in the list
-#'observations:3003653
+#'observations:3002639
+#'###########################12202038
 #'stations:602
 #'bikes:6130
 #'
