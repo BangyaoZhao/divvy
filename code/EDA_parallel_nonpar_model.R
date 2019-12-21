@@ -53,8 +53,7 @@ ggmap(myMap)
 #######################################################################
 ####### fit non-parametric model using parallel computing #################
 ##############################################################################
-trips_train=readRDS("/Users/sunyichi/Documents/GitHub/divvy/workingdata_train.rds")
-trips_train$from_station_id=as.factor(trips_train$from_station_id)
+trips_train=readRDS("/Users/sunyichi/Documents/GitHub/divvy/data/workingdata_train.rds")
 set.seed(625)
 library(caret)
 library(doParallel)
@@ -66,10 +65,10 @@ fitControl <- trainControl(
   number = 5,                      # number of folds
   savePredictions = 'final'
 ) 
-model <- train(tripduration ~ factor(from_station_id)+usertype+gender+factor(season)+age+hour+factor(day_of_week), data = trips_train[1:10,], method = "rf",metric="RMSE", trControl = fitControl)
+model <- train(tripduration ~ usertype+gender+factor(season)+age+hour+factor(day_of_week)+factor(clusterID)+Docks.in.Service, data = trips_train, method = "rf",metric="RMSE", trControl = fitControl)
 stopCluster(cl)
 save.image(file="rf.RData")
 
 
-# method=rf,	treebag, bagEarth, rpart, gaussprRadial, knn, svmRadial
+# method=rf,	treebag, rpart, gaussprRadial, knn, svmRadial
 
