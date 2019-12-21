@@ -15,7 +15,7 @@ test <- trips[-train_ind, ]
 saveRDS(train,file="/Users/sunyichi/Documents/GitHub/divvy/workingdata_train.rds")
 saveRDS(test,file="/Users/sunyichi/Documents/GitHub/divvy/workingdata_test.rds")
 
-############## mapbox ####################3
+############## mapbox ####################
 library(plotly)
 library(maps)
 library(ggmap)
@@ -46,10 +46,17 @@ ggmap(myMap)
 
 
 
-
-
+##########################################
+######## Split data to train/test #########
+###########################################
 trips_train=readRDS("/Users/sunyichi/Documents/GitHub/divvy/workingdata_train.rds")
 trips_train$from_station_id=as.factor(trips_train$from_station_id)
+
+
+
+##################################################
+####### fit non-parametric model #################
+##################################################
 set.seed(625)
 library(caret)
 library(doParallel)
