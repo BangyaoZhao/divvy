@@ -47,7 +47,7 @@ ui <- fluidPage(
         ),
         selectInput(
           "Station", "Station",
-          c(stationn),
+          c(stations),
           selected = "Buckingham Fountain"
         ),
         sliderInput(inputId = "age",
@@ -71,7 +71,6 @@ ui <- fluidPage(
 
 
 server <- function(input, output) {
-  
   
 }
 
