@@ -7,7 +7,7 @@ geometry: margin=1cm
 output: pdf_document
 ---
 
-Github link of our project: https://github.com/BangyaoZhao/divvy 
+[Here is our prject repository on Github](https://github.com/BangyaoZhao/divvy).
 
 All three authors had equal contributions. Xuemei, Bangyao and Sunyi contributed to data preprocessing, Bangyao contributed to the linear regression model, Xuemei contributed to K means clustering, Sunyi contributed to map plots, Sunyi, Bangyao, and Xuemei contributed to machine learning models with cluster and parallel computing, and Sunyi and Bangyao contributed to the shiny app.
 
@@ -105,7 +105,7 @@ Even after fixing the transformation, the $RMSE=33.39$ is still unsatisfactory, 
 ## Non-parametric Model and parallel computing in cluster
 
 Due to the memory limitation, we first tried a single tree model rpart, the Recursive Partitioning and Regression Trees model, to predict the duration of customers using Divvy bike. We used 20 cores to compute in parallel and used 5-fold cross validation to choose the best model. The procedure took one and a half hours. Since the single tree model was not good enough, we then used ensemble tree model random forest, tree bag, and also knn, SVM with radial kernel. At first, we set memory as 50 GB in cluster but an out-of-memory issue came up. A trade-off was that the more cores we used, the faster the the programs would finish, but the more memory we would need. Therefore, we used 150 GB memory and still used 20 cores. 
-Fitted models are saved in  mbox: https://umich.box.com/s/wok9fln0bzn3y0dgja57xrscjbqkt33s. 
+Fitted models are saved in  [mbox](https://umich.box.com/s/wok9fln0bzn3y0dgja57xrscjbqkt33s). 
 
 
 ### Prediction Results shown in interactive web apps
