@@ -104,12 +104,13 @@ Even after fixing the transformation, the $RMSE=33.39$ is still unsatisfactory, 
 
 ## Non-parametric Model and parallel computing in cluster
 
-Due to the memory limitation, we first tried a single tree model, i.e., rpart, the Recursive Partitioning and Regression Trees model, to predict the duration of customers using Divvy bike. We used 20 cores to compute in parallel and used 5-fold cross validation to choose the best model. The procedure took one and a half hours. The MSE was 1143, which was worse than the linear model. Since the single tree model was not good enough, we then used ensemble tree model random forest, tree bag, and also knn, SVM with radial kernel. At first, we set memory as 50 GB in cluster but an out-of-memory issue came up. A trade-off was that the more cores we used, the faster the the programs would finish, but the more memory we would need. Therefore, we used 150 GB memory and still used 20 cores. Fitted models are saved in  mbox: https://umich.box.com/s/wok9fln0bzn3y0dgja57xrscjbqkt33s.
+Due to the memory limitation, we first tried a single tree model rpart, the Recursive Partitioning and Regression Trees model, to predict the duration of customers using Divvy bike. We used 20 cores to compute in parallel and used 5-fold cross validation to choose the best model. The procedure took one and a half hours. Since the single tree model was not good enough, we then used ensemble tree model random forest, tree bag, and also knn, SVM with radial kernel. At first, we set memory as 50 GB in cluster but an out-of-memory issue came up. A trade-off was that the more cores we used, the faster the the programs would finish, but the more memory we would need. Therefore, we used 150 GB memory and still used 20 cores. 
+Fitted models are saved in  mbox: https://umich.box.com/s/wok9fln0bzn3y0dgja57xrscjbqkt33s. 
 
 
 ### Prediction Results shown in interactive web apps
 
-We fitted models on testing data and compared their MSE.
+We fitted models on testing data and compared their MSE.Here are the bar plot of MSE in testing data of all methods and our shiny app's UI. The MSE of non-parametric methods are slightly smaller than MSE of linear model, whcih shows an improvement. One limitaion of our project is that we didn't have enough computing resourses to tune parameters by cross validation. So remaing results are based on default paramter in R package caret. 
 
 ![A screenshot of our shiny app]("../plots/rshiny.PNG")
 
