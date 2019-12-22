@@ -122,7 +122,16 @@ Due to the memory limitation, we first try a single tree model--rpart, which is 
 
 ### Prediction Results shown in interactive web apps
 
-Please see file in github called shiny app.
+We fitted models on testing data and compare there MSE.
+
+```{r}
+library(ggplot2)
+df=data.frame("Methods"=,c(),"MSE"=c())
+ggplot(data=df) +
+  geom_bar(aes(x=Methods, y=MSE), position = "dodge", stat="identity",data=df)+
+  labs(y="MSE",title ="Predicted MSE")
+```
+
 
 
 
