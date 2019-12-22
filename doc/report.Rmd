@@ -3,7 +3,7 @@ title: "Shared Bike Usage Study"
 author: "Bangyao Zhao, Xuemei Ding, Sunyi Chi"
 date: "2019/12/22"
 subtitle: real-time prediction of bicycle riding-time in the big data setting
-geometry: margin=1cm
+geometry: margin=2.5cm
 output: pdf_document
 urlcolor: blue
 ---
@@ -37,7 +37,8 @@ usertype         | user type, either "Subscriber" (Annual Members) or "Customer"
 Gender           | gender of the user
 start_time       | start date and time of the trip
 
-![Map of Divvy Bikes stations](../plots/mapbox_black.png){width=200px}
+
+![Map of Divvy Bikes stations](../plots/mapbox_black.png){width=200px} ![Map of Divvy Bikes stations, where spots in different colors represent stations in different clusters](../plots/mapbox.png){width=200px} ![Histogram of users' age](../plots/HistOfAge.png){width=200px} 
 
 ## Variable Transformation
 To make full use of the variables, we extracted three variables from the original $start\_time$, as shown in Table 2.
@@ -59,17 +60,13 @@ Based on these data, we used the K-means clustering method to partition the stat
 The total within cluster variance decreases sharply at first, but after K larger than 40, it becomes relatively steady. So we set K = 40, run the K-means clustering method, and partitioned the stations into 40 distinct, non-overlapping clusters. The clustering results are displayed in Figure 3.
 
 
-![Map of Divvy Bikes stations, where spots in different colors represent stations in different clusters](../plots/mapbox.png){width=300px}
+
+![q-q Plot of the Linear Model](../plots/qqplot.png){width=200px}
+
+## Data Cleaning and partition
+In the Divvy Bikes data, 562,565 out of 3,603,082 trips did not have user's age or gender information and we deleted these. 2 out of 621 stations did not have any trips left after this step. Among the 3,040,517 remaining trips, some had very short duration time and were unlikely to be normal trips, so we deleted 34,849 trips that were shorter than half a minute ($tripduration < 0.5$). We also noticed that some users had an implausibly large age, some users being older than 100. We drew a histogram of all users' age, as shown in Figure 4.
 
 
-## Data Cleaning
-We first deleted data with the user's age or gender missing. 562,565 out of 3,603,082 trips were deleted. We also noticed 2 out of 621 stations did not have any trips left after this step.
-
-Among the 3,040,517 remaining trips, some had very short duration time and were unlikely to be normal trips, so we deleted trips that were shorter than half a minute ($tripduration < 0.5$). 34,849 trips were deleted in this step.
-
-We also noticed that some users had an implausibly large age, some users being older than 100. We drew a histogram of all users' age, as shown in Figure 4.
-
-![Histogram of users' age](../plots/HistOfAge.png){width=200px}
 
 From Figure 4, we can see that there are very few people older than 75, so we further deleted these people. In this step, 2,407 out of 3,005,668 trips were deleted.
 
@@ -77,7 +74,6 @@ To make use of the station information we found on the Divvy Bikes website, we o
 
 After data cleaning, we ended with a data set of 3,002,639 trips.
 
-## Data Partition
 We divided the data set equally into two parts, training data (1,501,319 trips) and testing data (1,501,320 trips).
 
 
@@ -94,8 +90,6 @@ Our design matrix $X$ is of dimension $1490516\times 653$ due to the presence of
 Another way to solve the Memory issue is to reduce dimension. We used the K-mean clustering method to group the stations by their distances and reduced the number of dummy variables. In this way, the design matrix became smaller and was able to fit in the memory. The model with cluster ID instead of station ID as a dummy variable had an $RMSE=33.67$.
 
 ### Constant Variance issue
-
-![q-q Plot of the Linear Model](../plots/qqplot.png){width=200px}
 
 As we can see from Figure 5, the normality assumption seemed to be violated in the model, so we decided to use a transformation to fix the problem and chose the square root transformation. 
 
@@ -122,7 +116,7 @@ ggplot(data=df) +
   labs(y="RMSE",title ="Predicted RMSE")
 ```
 
-![A screenshot of our shiny app]("../plots/rshiny.PNG")
+![A screenshot of our shiny app]("../plots/rshiny.PNG"){width=550px} 
 
 
 
