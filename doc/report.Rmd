@@ -110,7 +110,7 @@ Fitted models are saved in  mbox: https://umich.box.com/s/wok9fln0bzn3y0dgja57xr
 
 ### Prediction Results shown in interactive web apps
 
-We fitted models on testing data and compared their MSE.Here are the bar plot of MSE in testing data of all methods and our shiny app's UI. The MSE of non-parametric methods are slightly smaller than MSE of linear model, whcih shows an improvement. One limitaion of our project is that we didn't have enough computing resourses to tune parameters by cross validation. So remaing results are based on default paramter in R package caret. 
+We fitted models on testing data and compared their MSE.Here are the bar plot of MSE in testing data of all methods and our shiny app's UI. The RMSE of non-parametric methods are slightly smaller than RMSE of linear model, whcih shows an improvement. One limitaion of our project is that we didn't have enough computing resourses to tune parameters by cross validation. So remaing results are based on default paramter in R package caret. 
 
 ![A screenshot of our shiny app]("../plots/rshiny.PNG")
 
@@ -118,8 +118,8 @@ We fitted models on testing data and compared their MSE.Here are the bar plot of
 library(ggplot2)
 df=data.frame("Methods"=c("rpart", "rf"),"RMSE"=c(33.92, 33.10))
 ggplot(data=df) +
-  geom_bar(aes(x=Methods, y=MSE), position = "dodge", stat="identity",data=df)+
-  labs(y="MSE",title ="Predicted MSE")
+  geom_bar(aes(x=Methods, y=RMSE), position = "dodge", stat="identity",data=df)+
+  labs(y="RMSE",title ="Predicted RMSE")
 ```
 
 
