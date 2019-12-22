@@ -18,7 +18,7 @@ data = filter(data,!is.na(age) & !is.na(gender) & gender != "")
 data = filter(data, tripduration >= 30)
 
 png("plots/HistOfAge.png")
-hist(data$age, xlab = "Users' Age", main = "")
+ggplot2::ggplot(data, ggplot2::aes(age)) + ggplot2::geom_histogram()
 dev.off()
 #delete abnormal age
 data = filter(data, age <= 75)
@@ -82,11 +82,8 @@ cl10 <- sapply(seq(10, 100, 10), function(x) {
   return(c$tot.withinss)                      # get total within cluster variance
 })
 png("plots/totwithinss.png")                  # choose K
-plot(seq(10, 100, 10),
-     cl10,
-     type = "l",
-     xlab = "number of clusters",
-     ylab = "total within variance")
+ggplot2::ggplot(mapping = ggplot2::aes(seq(10, 100, 10), cl10)) + ggplot2::geom_line() +
+  ggplot2::xlab("number of clusters") + ggplot2::ylab("total within variance")
 dev.off()
 
 # decide on K = 40
