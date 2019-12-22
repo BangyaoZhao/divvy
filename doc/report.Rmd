@@ -10,11 +10,7 @@ output:
   html_document: default
 ---
 
-```{r include=FALSE}
-library(bigmemory)
-library(biganalytics)
-```
-
+Github link of our project: https://github.com/BangyaoZhao/divvy 
 
 # Introduction
 Bicycle sharing programs are getting popular today. They offer a convenient and affordable way to get around the city for both residents and tourists. Riding a bicycle is a fun exercise, and it is an environment-friendly transportation.
