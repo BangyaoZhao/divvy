@@ -9,7 +9,7 @@ output: pdf_document
 
 Github link of our project: https://github.com/BangyaoZhao/divvy 
 
-All three authors have equal contribution, where Xuemei, Bangyao and Sunyi contribute to data preprocessing, Bangyao contributes to linear regression, Xuemei contributes to k means, Sunyi contributes to map plots, Sunyi, Bangyao and Xuemei contributes to cluster parallel computing machine learning model, Sunyi and Bangyao contribute to shiny app.
+All three authors had equal contributions. Xuemei, Bangyao and Sunyi contributed to data preprocessing, Bangyao contributed to the linear regression model, Xuemei contributed to K means clustering, Sunyi contributed to map plots, Sunyi, Bangyao, and Xuemei contributed to machine learning models with cluster and parallel computing, and Sunyi and Bangyao contributed to the shiny app.
 
 # Introduction
 Bicycle sharing programs are getting popular today. They offer a convenient and affordable way to get around the city for both residents and tourists. Riding a bicycle is a fun exercise, and it is an environment-friendly transportation.
