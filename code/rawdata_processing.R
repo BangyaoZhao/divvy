@@ -18,7 +18,7 @@ data = filter(data,!is.na(age) & !is.na(gender) & gender != "")
 data = filter(data, tripduration >= 30)
 
 png("plots/HistOfAge.png")
-hist(data$age, xlab = "Users' Age", main = "")
+ggplot2::ggplot(data, ggplot2::aes(age)) + ggplot2::geom_histogram()
 dev.off()
 #delete abnormal age
 data = filter(data, age <= 75)
