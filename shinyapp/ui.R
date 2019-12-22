@@ -62,7 +62,7 @@ ui <- fluidPage(
       mainPanel(
         img(src="mapbox.png"),
         fluidRow(
-          box(title = "Predicted duration of user using bike",status = "primary",width = 14，tableOutput('mytable')
+          box(title = "Predicted duration of user using bike",status = "primary",width = 14, tableOutput('mytable')
               ))
       )
       )
