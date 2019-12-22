@@ -91,7 +91,7 @@ Fitted models are saved in  mbox: https://umich.box.com/s/kxq930wc4pd32w348t8b1n
 
 ### Prediction Results shown in interactive web apps
 
-Please see file called shiny app.
+Please see file in github called shiny app.
 
 # Appendix
 ## Figures
