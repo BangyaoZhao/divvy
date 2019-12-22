@@ -14,7 +14,7 @@ output:
 library(bigmemory)
 library(biganalytics)
 ```
-__The report is clearly written and sufficiently introduces the dataset of choice, the question of interest, the approach taken, and the results.__
+
 
 # Introduction
 Bicycle sharing programs are getting popular today. They offer a convenient and affordable way to get around the city for both residents and tourists. Riding a bicycle is a fun exercise, and it is an environment-friendly transportation.
