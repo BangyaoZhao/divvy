@@ -3,7 +3,7 @@
 #SBATCH --time=15:00:00
 #SBATCH --mail-user=xmding@umich.edu
 #SBATCH --mail-type=BEGIN,END,FAIL
-#SBATCH --mem=50GB
+#SBATCH --mem=150GB
 #SBATCH --cpus-per-task=20
 #SBATCH --array=2,3
 
