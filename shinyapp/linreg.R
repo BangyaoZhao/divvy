@@ -1,6 +1,7 @@
-prediction <- function(input) {
-  coefs <- readRDS("results/coefs.rds")
-  predict = coefs[(Intercept)]
+lin.pred <- function(input) {
+  coefs <- readRDS("../results/coefs.rds")
+  stations = read.csv("../data/Divvy_Bicycle_Stations.csv")
+  predict = coefs["(Intercept)"]
   predict = predict + coefs["usertype"] * ((input$Usertype == "Customer") *
                                              1 + (input$Usertype == "Subscriber") * 2)
   predict = predict + coefs["gender"] * ((input$Gender == "Male") *
@@ -17,7 +18,7 @@ prediction <- function(input) {
   predict = predict + coefs["age"] * input$age
   
   ID = stations$ID[which(stations$Station.Name == input$Station)]
-  if (length(coefs[paste0("from_station_id", ID)] == 1))
+  if (!is.na(coefs[paste0("from_station_id", ID)]))
     predict = predict + coefs[paste0("from_station_id", ID)]
   
   index = c("Monday",
@@ -28,5 +29,7 @@ prediction <- function(input) {
             "Saturday",
             "Sunday") == input$day
   day = (1:7)[index]
-  predict = predict + coefs[paste0("day_of_week", day)]
+  if (day != 1)
+    predict = predict + coefs[paste0("day_of_week", day)]
+  return(predict ^ 2)
 }

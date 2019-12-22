@@ -71,8 +71,9 @@ ui <- fluidPage(
 
 
 server <- function(input, output) {
+  source('linreg.R')
    output$mytable = renderTable({
-    1:5
+     lin.pred(input)
   },
   include.rownames=FALSE
   )
