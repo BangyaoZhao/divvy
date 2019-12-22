@@ -73,7 +73,6 @@ save.image(file="rf.RData")
 # method=rf,	treebag, rpart, gaussprRadial, knn, svmRadial
 
 
-#######################################################
 ############# prediction ###########################
 
 ######### rapart
@@ -83,6 +82,26 @@ model_rpart=predict(model, newdata =trips ,type="raw")
 
 ############ knn
 load("/Users/sunyichi/Downloads/knn.RData")
-model_rpart=predict(model, newdata =trips ,type="raw")
+model_knn=predict(model, newdata =trips ,type="raw")
+
+############ treebag
+load("/Users/sunyichi/Downloads/knn.RData")
+model_treebag=predict(model, newdata =trips ,type="raw")
+
+############ gaussprRadial
+load("/Users/sunyichi/Downloads/gaussprRadial.RData")
+model_gaussprRadial=predict(model, newdata =trips ,type="raw")
+
+############ svmRadial
+load("/Users/sunyichi/Downloads/svmRadial.RData")
+model_svmRadial=predict(model, newdata =trips ,type="raw")
+
+################################
+####### Result plot ##################################
+library(ggplot2)
+df=data.frame("Methods"=,c(),"MSE"=c())
+ggplot(data=df) +
+  geom_bar(aes(x=Methods, y=MSE), position = "dodge", stat="identity",data=df)+
+  labs(y="MSE",title ="Predicted MSE")
 
 

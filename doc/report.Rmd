@@ -94,19 +94,13 @@ Linear regression is an approach to identify linear relationship between a respo
 
 Our design matrix $X$ is of dimension $1490516\times 653$ due to the presence of categorical variables, which is too large to fit the matrix in the memory. When fitting the model, we were not able to fit the model by `lm()` function. We solve this problem by using the bigmemory package.
 
-### K-mean Method
-
-Using the K-mean method is another way to solve the Memory issue, which is to group the stations by their distance and reduce the number of dummy variables. When that is achieved, the design matrix will be thinner and able to put in memory.
-
-The final model has an $MSE=52.23$
+Using the K-mean method is another way to solve the Memory issue, which is to group the stations by their distance and reduce the number of dummy variables. When that is achieved, the design matrix will be thinner and able to put in memory. Then the model has an $MSE=52.23$
 
 ### Constant Variance issue
 
-The q-q plot is shown in Figure 5.
-
 ![Figure 5. q-q Plot of the Linear Model](../plots/qqplot.png){width=200px}
 
-As we can see, the normality assumption seems violated in the model, so we decided to use transformation to fix the problem, we finally chose the square root function. 
+As we can see from Figure 5, the normality assumption seems violated in the model, so we decided to use transformation to fix the problem, we finally chose the square root function. 
 
 ### Results
 
