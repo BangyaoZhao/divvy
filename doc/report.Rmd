@@ -2,12 +2,6 @@
 title: "Shared Bike Usage Study"
 author: "Bangyao Zhao, Xuemei Ding, Sunyi Chi"
 date: "2019/12/22"
-<<<<<<< HEAD
-=======
-output:
-  pdf_document: default
-  html_document: default
->>>>>>> c66fd7afdb10b3d1a9e6d7233261c35a684e4d02
 subtitle: real-time prediction of bicycle riding-time in the big data setting
 geometry: margin=1cm
 output: pdf_document
@@ -30,11 +24,10 @@ Our project aims to predict the trip duration time of each Divvy Bike trip in 20
 The dataset we used was the Divvy data set, which contained Divvy Bikes’ using information in 2018. 3,603,082 samples (trips) were recorded. For each trip, there was information of start and end time and station, as well as information of the user. Figure 1 shows a map of all the stations.
 
 ![Figure 1. Map of Divvy Bikes stations](../plots/mapbox_black.png){width=200px}
-<<<<<<< HEAD
+
 
 The original variables are listed in Table 1.
-=======
->>>>>>> c66fd7afdb10b3d1a9e6d7233261c35a684e4d02
+
 
 Table 1: original variables in the Divvy Bikes data
 ---------------------------------
@@ -68,11 +61,9 @@ Based on these data, we used K-means clustering method to partition the stations
 
 The total within cluster variance decreases sharply at first, but after K larger than 40, it becomes relatively steady. So we set K = 40, run the K-means clustering method, and partitioned the station into 40 distinct, non-overlapping clusters. The clustering results are displayed in Figure 3.
 
-<<<<<<< HEAD
-![Figure 3. Map of Divvy Bikes stations, where spots in different colors represent stations in different clusters](../plots/mapbox.png){width=200px}
-=======
+
 ![Figure 3. Map of Divvy Bikes stations, where spots in different colors represent stations in different clusters](../plots/mapbox.png){width=300px}
->>>>>>> c66fd7afdb10b3d1a9e6d7233261c35a684e4d02
+
 
 ## Data Cleaning
 We first deleted data with user's age or gender missing. 562,565 out of 3,603,082 trips were deleted. We also noticed 2 out of 621 stations did not have any trips left after this step.
