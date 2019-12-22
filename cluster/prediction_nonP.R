@@ -1,6 +1,11 @@
+methods = c("svmRadial", "treebag", "rpart", "gaussprRadial", "knn", "rf")
+i = Sys.getenv("SLURM_ARRAY_TASK_ID")
+(i = as.numeric(i))
+method = methods[i]
+
 # read in data and model
-load("knn.Rdata")
 workingdata_test <- readRDS("../data/workingdata_test.rds")
+load(paste0(method,".Rdata"))
 
 # parallel setting
 library(doParallel)
@@ -13,4 +18,4 @@ p <- predict(model, workingdata_test)
 
 stopCluster(cl)
 
-save.image("rpart_p.Rdata")
+save.image(paste0(method,"_p.Rdata"))
