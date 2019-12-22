@@ -114,7 +114,7 @@ Due to the memory limitation, we first tried a single tree model, i.e., rpart, t
 ### Prediction Results shown in interactive web apps
 
 We fitted models on testing data and compared their MSE.
-![A screenshot of our shiny app]()
+![A screenshot of our shiny app]("rshiny.PNG")
 
 ```{r}
 library(ggplot2)
