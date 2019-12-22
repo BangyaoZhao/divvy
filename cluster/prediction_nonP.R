@@ -1,5 +1,5 @@
 # read in data and model
-load("rpart.Rdata")
+load("knn.Rdata")
 workingdata_test <- readRDS("../data/workingdata_test.rds")
 
 # parallel setting
