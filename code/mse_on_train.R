@@ -5,6 +5,7 @@ methods = c("svmRadial", "treebag", "rpart", "gaussprRadial", "knn", "rf")
 
 # read in data and model
 # workingdata_test <- readRDS("data/workingdata_test.rds")
+workingdata_train <- readRDS("data/workingdata_train.rds")
 # for (i in c(2, 3, 5, 6))
 i = 6
 method = methods[i]
@@ -17,7 +18,7 @@ registerDoParallel(cl)
 
 # predict and calculate MSE
 p <- predict(model, workingdata_test)
-(mse <- sum((workingdata_test$tripduration - p)^2 / 1501320))
+(mse <- sum((workingdata_train$tripduration - model$finalModel$predicted)^2 / 1501319))
 
 stopCluster(cl)
 

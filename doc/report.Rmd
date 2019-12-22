@@ -115,7 +115,7 @@ We fitted models on testing data and compared their MSE.
 
 ```{r, echo = F}
 library(ggplot2)
-df=data.frame("Methods"=c("rpart"),"MSE"=c(1150.745))
+df=data.frame("Methods"=c("rpart", "rf"),"MSE"=c(1150.745, 1095.869))
 ggplot(data=df) +
   geom_bar(aes(x=Methods, y=MSE), position = "dodge", stat="identity",data=df)+
   labs(y="MSE",title ="Predicted MSE")
