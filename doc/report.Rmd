@@ -90,8 +90,6 @@ We divided the data set equally into two parts, training data (1,501,319 trips) 
 
 Linear regression is an approach to identify linear relationship between a response and explanatory variables. We use linear regression to start an exploratory research so as to identify significant predictors. 
 
-$$tripduration=X\beta+\varepsilon,\ \varepsilon\sim N(0,\sigma^2)$$
-
 ### Memory issue
 
 Our design matrix $X$ is of dimension $1490516\times 653$ due to the presence of categorical variables, which is too large to fit the matrix in the memory. When fitting the model, we were not able to fit the model by `lm()` function. We solve this problem by using the bigmemory package.
