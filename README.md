@@ -26,9 +26,9 @@ Gender           | gender of the user
 start_time       | start date and time of the trip
 
 
-![Figure 1. Map of Divvy Bikes stations](plots/mapbox_black.png){width=200px}
-![Figure 3. Map of Divvy Bikes stations, where spots in different colors represent stations in different clusters](plots/mapbox.png){width=200px}
-![Figure 4. Histogram of users' age](plots/HistOfAge.png){width=200px} 
+![Figure 1. Map of Divvy Bikes stations](plots/mapbox_black.png)
+![Figure 3. Map of Divvy Bikes stations, where spots in different colors represent stations in different clusters](plots/mapbox.png)
+![Figure 4. Histogram of users' age](plots/HistOfAge.png)
 
 ## Variable Transformation
 To make full use of the variables, we extracted three variables from the original $start\_time$, as shown in Table 2.
@@ -45,13 +45,13 @@ To reduce the dimension of the categorical variable $from\_station\_name$, we se
 
 Based on these data, we used the K-means clustering method to partition the stations by their locations. We first partitioned the stations into 10, 20, ..., 100 clusters (K = 10, 20, ..., 100) and calculated the total within cluster variance for each K. Then we  plotted the total within cluster variance against K and selected an optimal K by minimizing the total within cluster variance with a smallest K. Figure 2 shows the plot of total within cluster variance with K from 10 to 100.
 
-![Figure2. Total within cluster variance under different number of groups](plots/totwithinss.png){width=200px}
+![Figure2. Total within cluster variance under different number of groups](plots/totwithinss.png)
 
 The total within cluster variance decreases sharply at first, but after K larger than 40, it becomes relatively steady. So we set K = 40, run the K-means clustering method, and partitioned the stations into 40 distinct, non-overlapping clusters. The clustering results are displayed in Figure 3.
 
 
 
-![Figure5. q-q Plot of the Linear Model](plots/qqplot.png){width=200px}
+![Figure5. q-q Plot of the Linear Model](plots/qqplot.png)
 
 ## Data Cleaning and partition
 In the Divvy Bikes data, 562,565 out of 3,603,082 trips did not have user's age or gender information and we deleted these. 2 out of 621 stations did not have any trips left after this step. Among the 3,040,517 remaining trips, some had very short duration time and were unlikely to be normal trips, so we deleted 34,849 trips that were shorter than half a minute ($tripduration < 0.5$). We also noticed that some users had an implausibly large age, some users being older than 100. We drew a histogram of all users' age, as shown in Figure 4.
@@ -106,7 +106,7 @@ ggplot(data=df) +
   labs(y="RMSE",title ="Predicted RMSE")
 ```
 
-![Figure6. A screenshot of our shiny app]("plots/rshiny.PNG"){width=550px}
+![Figure6. A screenshot of our shiny app]("plots/rshiny.PNG")
 
 
 
