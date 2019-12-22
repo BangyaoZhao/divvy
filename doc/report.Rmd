@@ -117,7 +117,7 @@ We fitted models on testing data and compared their MSE.
 
 ![A screenshot of our shiny app]("../plots/rshiny.PNG")
 
-```{r}
+```{r, echo = F}
 library(ggplot2)
 df=data.frame("Methods"=c("rpart"),"MSE"=c(1150.745))
 ggplot(data=df) +
