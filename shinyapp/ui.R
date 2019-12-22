@@ -71,7 +71,11 @@ ui <- fluidPage(
 
 
 server <- function(input, output) {
-  
+   output$mytable = renderTable({
+    
+  },
+  include.rownames=FALSE
+  )
 }
 
 shinyApp(ui, server)
