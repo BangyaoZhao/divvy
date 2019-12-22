@@ -5,6 +5,7 @@ date: "2019/12/22"
 subtitle: real-time prediction of bicycle riding-time in the big data setting
 geometry: margin=1cm
 output: pdf_document
+urlcolor: blue
 ---
 
 [Here is our prject repository on Github](https://github.com/BangyaoZhao/divvy).
