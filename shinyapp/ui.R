@@ -43,7 +43,7 @@ ui <- fluidPage(
             Saturday="Saturday",
             Sunday="Sunday"
           ),
-          selected = "Spring"
+          selected = "Sunday"
         ),
         selectInput(
           "Station", "Station",
