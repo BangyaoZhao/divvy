@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=psbf
+#SBATCH --job-name=pred
 #SBATCH --time=15:00:00
 #SBATCH --mail-user=xmding@umich.edu
 #SBATCH --mail-type=BEGIN,END,FAIL
