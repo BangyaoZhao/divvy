@@ -76,7 +76,7 @@ The final model has an $MSE=52.23$
 
 ### Constant Variance issue
 
-The q-q plot is shown in Figure 3.
+The q-q plot is shown in Figure 5.
 
 As we can see, the normality assumption seems violated in the model, so we decided to use transformation to fix the problem, we finally chose the square root function. 
 
@@ -86,11 +86,11 @@ Even after fixing the transformation, the $MSE=40.58$ is still unsatisfactory, w
 
 ## Non-parametric Model and parallel computing in cluster
 
-Due to the memory limitation, we first try a single tree model--rpart, which is Recursive Partitioning and Regression Trees, to predict the duration of customers using Divvy bike. We used 20 cores to compute in parallel and used 5 fold cross validation to choose the best model. The procedure costs one and half hours. The RMSE is 33.80845. The result is not as good as linear model.
+Due to the memory limitation, we first try a single tree model--rpart, which is Recursive Partitioning and Regression Trees, to predict the duration of customers using Divvy bike. We used 20 cores to compute in parallel and used 5-fold cross validation to choose the best model. The procedure costs one and a half hours. The RMSE is 33.80845. The result is not as good as linear model.
 
-Since single tree model is not good enough, we then used ensemble tree model random forest, tree bag and also knn, SVM with radial kernel, Gaussian Process model with radial kernel. At first, we set memory as 50GB in cluster but out of memory issure came up. Then we used 150BG memory and still used 20 cores. Due to time limitation, we don't have final fitted model of random forest, tree bag, SVM with radial kernel, Gaussian Process model with radial kernel. 
+Since single tree model is not good enough, we then used ensemble tree model random forest, tree bag and also knn, SVM with radial kernel, Gaussian Process model with radial kernel. At first, we set memory as 50 GB in cluster but out of memory issure came up. Then we used 150 GB memory and still used 20 cores. Due to time limitation, we don't have final fitted model of random forest, tree bag, SVM with radial kernel, Gaussian Process model with radial kernel. 
 
-Fitted models saved in  mbox: https://umich.box.com/s/kxq930wc4pd32w348t8b1nwftd3o79dc.
+Fitted models are saved in  mbox: https://umich.box.com/s/kxq930wc4pd32w348t8b1nwftd3o79dc.
 
 
 ### Prediction Results shown in interactive web apps
@@ -103,10 +103,12 @@ Please see file called shiny app.
 ![Figure 1. Map of Divvy Bikes stations](../plots/mapbox_black.png)
 
 ![Figure 2. Total within cluster variance under different number of groups](../plots/totwithinss.png)
-![Figure 3. q-q Plot of the Linear Model](../plots/qqplot.png)
+
 ![Figure 3. Map of Divvy Bikes stations, where spots in different colors represent stations in different clusters](../plots/mapbox.png)
 
 ![Figure 4. Histogram of users' age](../plots/HistOfAge.png)
+
+![Figure 5. q-q Plot of the Linear Model](../plots/qqplot.png)
 
 ## Tables
 
