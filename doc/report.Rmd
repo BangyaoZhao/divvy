@@ -110,7 +110,7 @@ Fitted models are saved in  mbox: https://umich.box.com/s/wok9fln0bzn3y0dgja57xr
 
 ### Prediction Results shown in interactive web apps
 
-We fitted models on testing data and compared their MSE.
+We fitted models on testing data and compared their MSE.Here are the bar plot of MSE in testing data of all methods and our shiny app's UI.
 
 ![A screenshot of our shiny app]("../plots/rshiny.PNG")
 
