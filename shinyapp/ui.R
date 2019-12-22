@@ -62,7 +62,7 @@ ui <- fluidPage(
       mainPanel(
         img(src="mapbox.png"),
         fluidRow(
-          box(title = "Predicted duration of user using bike",status = "primary",width = 14,tableOutput('mytable')
+          box(title = "Predicted duration of user using bike",status = "primary",width = 8,tableOutput('mytable')
               ))
       )
       )
@@ -73,9 +73,10 @@ ui <- fluidPage(
 server <- function(input, output) {
   source('linreg.R')
    output$mytable = renderTable({
-     lin.pred(input)
+     c(lin.pred(input))
   },
-  include.rownames=FALSE
+  include.rownames=FALSE,
+  colnames = F
   )
 }
 
