@@ -62,7 +62,7 @@ ui <- fluidPage(
       mainPanel(
         img(src="mapbox.png"),
         fluidRow(
-          box(title = "Predicted duration of user using bike",status = "primary",width = 14
+          box(title = "Predicted duration of user using bike",status = "primary",width = 14，tableOutput('mytable')
               ))
       )
       )
@@ -71,7 +71,11 @@ ui <- fluidPage(
 
 
 server <- function(input, output) {
-  
+   output$mytable = renderTable({
+    
+  },
+  include.rownames=FALSE
+  )
 }
 
 shinyApp(ui, server)
