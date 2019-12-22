@@ -72,3 +72,17 @@ save.image(file="rf.RData")
 
 # method=rf,	treebag, rpart, gaussprRadial, knn, svmRadial
 
+
+#######################################################
+############# prediction ###########################
+
+######### rapart
+trips=readRDS("/Users/sunyichi/Documents/GitHub/divvy/data/workingdata_test.rds")
+load("/Users/sunyichi/Downloads/rpart.RData")
+model_rpart=predict(model, newdata =trips ,type="raw")
+
+############ knn
+load("/Users/sunyichi/Downloads/knn.RData")
+model_rpart=predict(model, newdata =trips ,type="raw")
+
+
