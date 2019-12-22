@@ -1,0 +1,4 @@
+Subscriber:2
+Customer:1
+Male:3
+Female:2
