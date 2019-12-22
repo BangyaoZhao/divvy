@@ -9,7 +9,7 @@ registerDoParallel(cl)
 
 # predict and calculate MSE
 p <- predict(model, workingdata_test)
-mse <- sum((workingdata_test$tripduration - p)^2 / 1501320)
+(mse <- sum((workingdata_test$tripduration - p)^2 / 1501320))
 
 stopCluster(cl)
 
